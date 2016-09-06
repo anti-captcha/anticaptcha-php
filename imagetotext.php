@@ -14,7 +14,7 @@ class ImageToText extends Anticaptcha implements AntiCaptchaTaskProtocol {
     public function getPostData() {
         return array(
             "type"      =>  "ImageToTextTask",
-            "body"      =>  $this->body,
+            "body"      =>  str_replace("\n", "", $this->body),
             "phrase"    =>  $this->phrase,
             "case"      =>  $this->case,
             "numeric"   =>  $this->numeric,
