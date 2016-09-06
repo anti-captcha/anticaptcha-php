@@ -103,7 +103,7 @@ class Anticaptcha {
     
     public function jsonPostRequest($methodName, $postData) {
         $ch = curl_init();
-        curl_setopt($ch,CURLOPT_URL,"http://{$this->host}/$methodName");
+        curl_setopt($ch,CURLOPT_URL,"https://{$this->host}/$methodName");
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
         curl_setopt($ch,CURLOPT_ENCODING,"gzip,deflate");
         curl_setopt($ch,CURLOPT_CUSTOMREQUEST, "POST");   
