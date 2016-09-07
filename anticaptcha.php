@@ -29,11 +29,10 @@ class Anticaptcha {
             "clientKey" =>  $this->clientKey,
             "task"      =>  $this->getPostData()
         );
-        $postResult = $this->jsonPostRequest("createTask", $postData);
-        $submitResult = json_decode($postResult);
+        $submitResult = $this->jsonPostRequest("createTask", $postData);
         
-        if (!is_object($submitResult)) {
-            $this->debout("API error $postResult", "red");
+        if ($submitResult == false) {
+            $this->debout("API error", "red");
             return false;
         }
         
@@ -63,7 +62,12 @@ class Anticaptcha {
         $this->debout("requesting task status");
         $postResult = $this->jsonPostRequest("getTaskResult", $postData);
         
-        $this->taskInfo = json_decode($postResult);
+        if ($postResult == false) {
+            $this->debout("API error", "red");
+            return false;
+        }
+        
+        $this->taskInfo = $postResult;
         
         
         if ($this->taskInfo->errorId == 0) {
@@ -85,6 +89,22 @@ class Anticaptcha {
         } else {
             $this->debout("API error {$this->taskInfo->errorCode} : {$this->taskInfo->errorDescription}", "red");
             $this->setErrorMessage($this->taskInfo->errorDescription);
+            return false;
+        }
+    }
+    
+    public function getBalance() {
+        $postData = array(
+            "clientKey" =>  $this->clientKey
+        );
+        $result = $this->jsonPostRequest("getBalance", $postData);
+        if ($result == false) {
+            $this->debout("API error", "red");
+            return false;
+        }
+        if ($result->errorId == 0) {
+            return $result->balance;
+        } else {
             return false;
         }
     }
@@ -120,10 +140,10 @@ class Anticaptcha {
         
         if ($curlError != "") {
             $this->debout("Network error: $curlError");
+            return false;
         }
-        
         curl_close($ch);
-        return $result;
+        return json_decode($result);
     }
     
     public function setVerboseMode($mode) {
