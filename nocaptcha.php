@@ -4,6 +4,7 @@ class NoCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
 
     private $websiteUrl;
     private $websiteKey;
+    private $websiteSToken;
     private $proxyType = "http";
     private $proxyAddress;
     private $proxyPort;
@@ -17,6 +18,7 @@ class NoCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
             "type"          =>  "NoCaptchaTask",
             "websiteURL"    =>  $this->websiteUrl,
             "websiteKey"    =>  $this->websiteKey,
+            "websiteSToken" =>  $this->websiteSToken,
             "proxyType"     =>  $this->proxyType,
             "proxyAddress"  =>  $this->proxyAddress,
             "proxyPort"     =>  $this->proxyPort,
@@ -40,6 +42,10 @@ class NoCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function setWebsiteKey($value) {
         $this->websiteKey = $value;
+    }
+    
+    public function setWebsiteSToken($value) {
+        $this->websiteSToken = $value;
     }
     
     public function setProxyType($value) {
