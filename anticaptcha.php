@@ -11,6 +11,7 @@ interface AntiCaptchaTaskProtocol {
 class Anticaptcha {
 
     private $host = "api.anti-captcha.com";
+    private $scheme = "https";
     private $clientKey;
     private $verboseMode = false;
     private $errorMessage;
@@ -55,7 +56,7 @@ class Anticaptcha {
         );
         if ($currentSecond == 0) {
             $this->debout("waiting 5 seconds..");
-            sleep(5);
+            sleep(3);
         } else {
             sleep(1);
         }
@@ -111,7 +112,7 @@ class Anticaptcha {
     
     public function getTaskResult() {
         
-        return $this->taskSolution;
+        return $this->getTaskSolution();
         
     }
     
@@ -123,7 +124,7 @@ class Anticaptcha {
     
     public function jsonPostRequest($methodName, $postData) {
         $ch = curl_init();
-        curl_setopt($ch,CURLOPT_URL,"https://{$this->host}/$methodName");
+        curl_setopt($ch,CURLOPT_URL,"{$this->scheme}://{$this->host}/$methodName");
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
         curl_setopt($ch,CURLOPT_ENCODING,"gzip,deflate");
         curl_setopt($ch,CURLOPT_CUSTOMREQUEST, "POST");   
@@ -187,6 +188,10 @@ class Anticaptcha {
     
     public function setHost($host) {
         $this->host = $host;
+    }
+    
+    public function setScheme($scheme) {
+        $this->scheme = $scheme;
     }
     
     /**
