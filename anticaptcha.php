@@ -136,6 +136,7 @@ class Anticaptcha {
             'Content-Length: ' . strlen($postDataEncoded) 
         ));
         curl_setopt($ch,CURLOPT_TIMEOUT,30);
+        curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,30);
         $result =curl_exec($ch);
         $curlError = curl_error($ch);
         
