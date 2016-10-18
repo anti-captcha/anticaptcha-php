@@ -76,12 +76,4 @@ class NoCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
         $this->cookies = $value;
     }
     
-    public function setClientId($clientId) {
-        $this->clientId = $clientId;
-    }
-    
-    public function setTaskId($taskId) {
-        $this->taskId = $taskId;
-    }
-
 }
