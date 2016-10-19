@@ -22,7 +22,6 @@ class Anticaptcha {
     
     /**
      * Submit new task and receive tracking ID
-     * @param AntiTask $task
      */
     public function createTask() {
         
