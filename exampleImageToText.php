@@ -24,5 +24,6 @@ if (!$api->waitForResult()) {
     $api->debout("could not solve captcha", "red");
     $api->debout($api->getErrorMessage());
 } else {
-    echo "\nhash result: ".$api->getTaskSolution()."\n\n";
+    $captchaText    =   $api->getTaskSolution();
+    echo "\nresult: $captchaText\n\n";
 }

@@ -35,5 +35,6 @@ if (!$api->waitForResult()) {
     $api->debout("could not solve captcha", "red");
     $api->debout($api->getErrorMessage());
 } else {
-    echo "\nhash result: ".$api->getTaskSolution()."\n\n";
+    $recaptchaToken =   $api->getTaskSolution();
+    echo "\ntoken result: $recaptchaToken\n\n";
 }

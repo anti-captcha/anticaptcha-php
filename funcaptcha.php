@@ -26,10 +26,6 @@ class FunCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
         );
     }
     
-    public function setTaskInfo($taskInfo) {
-        $this->taskInfo = $taskInfo;
-    }
-    
     public function getTaskSolution() {
         return $this->taskInfo->solution->token;
     }

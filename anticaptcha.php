@@ -3,7 +3,6 @@
 interface AntiCaptchaTaskProtocol {
     
     public function getPostData();
-    public function setTaskInfo($taskInfo);
     public function getTaskSolution();
     
 }
@@ -80,10 +79,9 @@ class Anticaptcha {
             }
             if ($this->taskInfo->status == "ready") {
                 $this->debout("task is complete", "green");
-                $this->getTaskSolution($this->taskInfo);
                 return true;
             }
-            $this->setErrorMessage("unknown API status, update your software", "red");
+            $this->setErrorMessage("unknown API status, update your software");
             return false;
             
         } else {
@@ -107,18 +105,6 @@ class Anticaptcha {
         } else {
             return false;
         }
-    }
-    
-    public function getTaskResult() {
-        
-        return $this->getTaskSolution();
-        
-    }
-    
-    public function getTaskInfo() {
-        
-        return $this->taskInfo;
-        
     }
     
     public function jsonPostRequest($methodName, $postData) {
