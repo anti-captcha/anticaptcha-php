@@ -22,7 +22,8 @@ class FunCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
             "proxyPort"         =>  $this->proxyPort,
             "proxyLogin"        =>  $this->proxyLogin,
             "proxyPassword"     =>  $this->proxyPassword,
-            "userAgent"         =>  $this->userAgent
+            "userAgent"         =>  $this->userAgent,
+            "cookies"           =>  $this->cookies
         );
     }
     
