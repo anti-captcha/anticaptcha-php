@@ -11,7 +11,7 @@ class NoCaptchaProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol 
             "type"          =>  "NoCaptchaTaskProxyless",
             "websiteURL"    =>  $this->websiteUrl,
             "websiteKey"    =>  $this->websiteKey,
-            "websiteSToken" =>  $this->websiteSToken,
+            "websiteSToken" =>  $this->websiteSToken
         );
     }
     

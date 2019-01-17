@@ -3,6 +3,7 @@
 class FunCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
 
     private $websiteUrl;
+    private $jsSubdomain;
     private $websitePublicKey;
     private $proxyType = "http";
     private $proxyAddress;
@@ -14,16 +15,17 @@ class FunCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function getPostData() {
         return array(
-            "type"              =>  "FunCaptchaTask",
-            "websiteURL"        =>  $this->websiteUrl,
-            "websitePublicKey"  =>  $this->websitePublicKey,
-            "proxyType"         =>  $this->proxyType,
-            "proxyAddress"      =>  $this->proxyAddress,
-            "proxyPort"         =>  $this->proxyPort,
-            "proxyLogin"        =>  $this->proxyLogin,
-            "proxyPassword"     =>  $this->proxyPassword,
-            "userAgent"         =>  $this->userAgent,
-            "cookies"           =>  $this->cookies
+            "type"                      =>  "FunCaptchaTask",
+            "websiteURL"                =>  $this->websiteUrl,
+            "funcaptchaApiJSSubdomain"  =>  $this->jsSubdomain,
+            "websitePublicKey"          =>  $this->websitePublicKey,
+            "proxyType"                 =>  $this->proxyType,
+            "proxyAddress"              =>  $this->proxyAddress,
+            "proxyPort"                 =>  $this->proxyPort,
+            "proxyLogin"                =>  $this->proxyLogin,
+            "proxyPassword"             =>  $this->proxyPassword,
+            "userAgent"                 =>  $this->userAgent,
+            "cookies"                   =>  $this->cookies
         );
     }
     
