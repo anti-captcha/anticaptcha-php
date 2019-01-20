@@ -5,13 +5,15 @@ class GeeTestProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $websiteUrl;
     private $websiteKey;
     private $websiteChallenge;
+    private $geetestApiServerSubdomain;
     
     public function getPostData() {
         $set = array(
-            "type"          =>  "GeeTestTaskProxyless",
-            "websiteURL"    =>  $this->websiteUrl,
-            "gt"            =>  $this->websiteKey,
-            "challenge"     =>  $this->websiteChallenge
+            "type"                      =>  "GeeTestTaskProxyless",
+            "websiteURL"                =>  $this->websiteUrl,
+            "geetestApiServerSubdomain" =>  $this->geetestApiServerSubdomain,
+            "gt"                        =>  $this->websiteKey,
+            "challenge"                 =>  $this->websiteChallenge
         );
         return $set;
     }
@@ -34,6 +36,10 @@ class GeeTestProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function setChallenge($value) {
         $this->websiteChallenge = $value;
+    }
+    
+    public function setAPISubdomain($value) {
+        $this->geetestApiServerSubdomain = $value;
     }
     
 }

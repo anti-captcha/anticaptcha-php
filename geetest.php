@@ -5,6 +5,7 @@ class GeeTest extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $websiteUrl;
     private $websiteKey;
     private $websiteChallenge;
+    private $geetestApiServerSubdomain;
     private $proxyType = "http";
     private $proxyAddress;
     private $proxyPort;
@@ -15,17 +16,18 @@ class GeeTest extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function getPostData() {
         return array(
-            "type"          =>  "GeeTestTask",
-            "websiteURL"    =>  $this->websiteUrl,
-            "gt"            =>  $this->websiteKey,
-            "challenge"     =>  $this->websiteChallenge,
-            "proxyType"     =>  $this->proxyType,
-            "proxyAddress"  =>  $this->proxyAddress,
-            "proxyPort"     =>  $this->proxyPort,
-            "proxyLogin"    =>  $this->proxyLogin,
-            "proxyPassword" =>  $this->proxyPassword,
-            "userAgent"     =>  $this->userAgent,
-            "cookies"       =>  $this->cookies
+            "type"                      =>  "GeeTestTask",
+            "websiteURL"                =>  $this->websiteUrl,
+            "geetestApiServerSubdomain" =>  $this->geetestApiServerSubdomain,
+            "gt"                        =>  $this->websiteKey,
+            "challenge"                 =>  $this->websiteChallenge,
+            "proxyType"                 =>  $this->proxyType,
+            "proxyAddress"              =>  $this->proxyAddress,
+            "proxyPort"                 =>  $this->proxyPort,
+            "proxyLogin"                =>  $this->proxyLogin,
+            "proxyPassword"             =>  $this->proxyPassword,
+            "userAgent"                 =>  $this->userAgent,
+            "cookies"                   =>  $this->cookies
         );
     }
     
@@ -75,6 +77,10 @@ class GeeTest extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function setCookies($value) {
         $this->cookies = $value;
+    }
+    
+    public function setAPISubdomain($value) {
+        $this->geetestApiServerSubdomain = $value;
     }
     
 }
