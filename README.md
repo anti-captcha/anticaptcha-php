@@ -13,6 +13,7 @@ cd php
 ```
 3. Run example
 ```bash
+cd examples
 php exampleNoCaptchaProxyless.php
 ```
 
