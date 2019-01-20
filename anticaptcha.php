@@ -47,7 +47,7 @@ class Anticaptcha {
         
     }
     
-    public function waitForResult($maxSeconds = 60, $currentSecond = 0) {
+    public function waitForResult($maxSeconds = 300, $currentSecond = 0) {
         $postData = array(
             "clientKey" =>  $this->clientKey,
             "taskId"    =>  $this->taskId
@@ -108,6 +108,14 @@ class Anticaptcha {
     }
     
     public function jsonPostRequest($methodName, $postData) {
+        
+        
+        if ($this->verboseMode) {
+            echo "making request to {$this->scheme}://{$this->host}/$methodName with following payload:\n";
+            print_r($postData);
+        }
+        
+        
         $ch = curl_init();
         curl_setopt($ch,CURLOPT_URL,"{$this->scheme}://{$this->host}/$methodName");
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
