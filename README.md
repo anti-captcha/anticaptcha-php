@@ -6,14 +6,12 @@ Any UNIX system with php-curl.
 
 
 **How to use examples**
-1. Change default API key to yours in example.
-2. Navigate to directory in terminal
+1. Navigate to directory in terminal
 ```bash
-cd php
+cd anticaptcha-php/examples
 ```
-3. Run example
+2. Run any example
 ```bash
-cd examples
 php exampleNoCaptchaProxyless.php
 ```
 
