@@ -5,14 +5,22 @@ class FunCaptchaProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol
     private $websiteUrl;
     private $jsSubdomain;
     private $websitePublicKey;
+    private $dataBlob;
     
     public function getPostData() {
-        return array(
+        $data = array(
             "type"                      =>  "FunCaptchaTaskProxyless",
             "websiteURL"                =>  $this->websiteUrl,
             "funcaptchaApiJSSubdomain"  =>  $this->jsSubdomain,
             "websitePublicKey"          =>  $this->websitePublicKey
         );
+        if ($this->jsSubdomain != null) {
+            $data["funcaptchaApiJSSubdomain"] = $this->jsSubdomain;
+        }
+        if ($this->dataBlob != null) {
+            $data["data"] = $this->dataBlob;
+        }
+        return $data;
     }
     
     public function setTaskInfo($taskInfo) {
@@ -33,6 +41,13 @@ class FunCaptchaProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol
     
     public function setWebsitePublicKey($value) {
         $this->websitePublicKey = $value;
+    }
+    
+    /**
+     * @param string $dataBlob
+     */
+    public function setDataBlob($dataBlob) {
+        $this->dataBlob = array("blob" => $dataBlob);
     }
     
     

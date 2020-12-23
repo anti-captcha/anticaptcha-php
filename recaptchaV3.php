@@ -1,18 +1,24 @@
 <?php
 
-class NoCaptchaProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
+class RecaptchaV3 extends Anticaptcha implements AntiCaptchaTaskProtocol {
 
     private $websiteUrl;
     private $websiteKey;
-    private $websiteSToken;
+    private $pageAction;
+    private $minScore;
     
     public function getPostData() {
         return array(
-            "type"          =>  "NoCaptchaTaskProxyless",
+            "type"          =>  "RecaptchaV3TaskProxyless",
             "websiteURL"    =>  $this->websiteUrl,
             "websiteKey"    =>  $this->websiteKey,
-            "websiteSToken" =>  $this->websiteSToken
+            "minScore"      =>  $this->minScore,
+            "pageAction"    =>  $this->pageAction
         );
+    }
+    
+    public function setTaskInfo($taskInfo) {
+        $this->taskInfo = $taskInfo;
     }
     
     public function getTaskSolution() {
@@ -27,8 +33,12 @@ class NoCaptchaProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol 
         $this->websiteKey = $value;
     }
     
-    public function setWebsiteSToken($value) {
-        $this->websiteSToken = $value;
+    public function setPageAction($value) {
+        $this->pageAction = $value;
+    }
+    
+    public function setMinScore($value) {
+        $this->minScore = $value;
     }
     
 }

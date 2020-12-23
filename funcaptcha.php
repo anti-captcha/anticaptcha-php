@@ -5,6 +5,7 @@ class FunCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $websiteUrl;
     private $jsSubdomain;
     private $websitePublicKey;
+    private $dataBlob;
     private $proxyType = "http";
     private $proxyAddress;
     private $proxyPort;
@@ -14,7 +15,7 @@ class FunCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $cookies = "";
     
     public function getPostData() {
-        return array(
+        $data = array(
             "type"                      =>  "FunCaptchaTask",
             "websiteURL"                =>  $this->websiteUrl,
             "funcaptchaApiJSSubdomain"  =>  $this->jsSubdomain,
@@ -27,6 +28,13 @@ class FunCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
             "userAgent"                 =>  $this->userAgent,
             "cookies"                   =>  $this->cookies
         );
+        if ($this->jsSubdomain != null) {
+            $data["funcaptchaApiJSSubdomain"] = $this->jsSubdomain;
+        }
+        if ($this->dataBlob != null) {
+            $data["data"] = $this->dataBlob;
+        }
+        return $data;
     }
     
     public function getTaskSolution() {
@@ -68,5 +76,14 @@ class FunCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
     public function setCookies($value) {
         $this->cookies = $value;
     }
+    
+    /**
+     * @param string $dataBlob
+     */
+    public function setDataBlob($dataBlob) {
+        $this->dataBlob = array("blob" => $dataBlob);
+    }
+    
+    
     
 }
