@@ -6,6 +6,7 @@ class GeeTestProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $websiteKey;
     private $websiteChallenge;
     private $geetestApiServerSubdomain;
+    private $geetestLib;
     private $userAgent = "";
     
     public function getPostData() {
@@ -13,6 +14,7 @@ class GeeTestProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
             "type"                      =>  "GeeTestTaskProxyless",
             "websiteURL"                =>  $this->websiteUrl,
             "geetestApiServerSubdomain" =>  $this->geetestApiServerSubdomain,
+            "geetestGetLib"             =>  $this->geetestLib,
             "gt"                        =>  $this->websiteKey,
             "challenge"                 =>  $this->websiteChallenge,
             "userAgent"                 =>  $this->userAgent,
@@ -47,6 +49,12 @@ class GeeTestProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
     public function setUserAgent(string $value): void {
         $this->userAgent = $value;
     }
+    
+    public function setGeetestLib(string $geetestLib): void {
+        $this->geetestLib = $geetestLib;
+    }
+    
+    
     
     
     

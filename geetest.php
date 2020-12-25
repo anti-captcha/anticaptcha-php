@@ -6,6 +6,7 @@ class GeeTest extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $websiteKey;
     private $websiteChallenge;
     private $geetestApiServerSubdomain;
+    private $geetestLib;
     private $proxyType = "http";
     private $proxyAddress;
     private $proxyPort;
@@ -19,6 +20,7 @@ class GeeTest extends Anticaptcha implements AntiCaptchaTaskProtocol {
             "type"                      =>  "GeeTestTask",
             "websiteURL"                =>  $this->websiteUrl,
             "geetestApiServerSubdomain" =>  $this->geetestApiServerSubdomain,
+            "geetestGetLib"             =>  $this->geetestLib,
             "gt"                        =>  $this->websiteKey,
             "challenge"                 =>  $this->websiteChallenge,
             "proxyType"                 =>  $this->proxyType,
@@ -81,6 +83,10 @@ class GeeTest extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function setAPISubdomain($value) {
         $this->geetestApiServerSubdomain = $value;
+    }
+    
+    public function setGeetestLib(string $geetestLib): void {
+        $this->geetestLib = $geetestLib;
     }
     
 }
