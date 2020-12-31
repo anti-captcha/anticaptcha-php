@@ -130,10 +130,15 @@ class Anticaptcha {
         ));
         curl_setopt($ch,CURLOPT_TIMEOUT,30);
         curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,30);
-        $result =curl_exec($ch);
+        $result = curl_exec($ch);
+        if ($this->verboseMode) {
+            echo "API response:\n";
+            echo $result."\n";
+        }
         $curlError = curl_error($ch);
         
         if ($curlError != "") {
+            $this->errorMessage = "Network error: $curlError";
             $this->debout("Network error: $curlError");
             return false;
         }
