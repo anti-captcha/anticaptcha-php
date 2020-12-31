@@ -6,6 +6,7 @@ class RecaptchaV2Proxyless extends Anticaptcha implements AntiCaptchaTaskProtoco
     private $websiteKey;
     private $websiteSToken;
     private $dataSValue;
+    private $isInvisible;
     
     public function getPostData() {
         return array(
@@ -13,7 +14,8 @@ class RecaptchaV2Proxyless extends Anticaptcha implements AntiCaptchaTaskProtoco
             "websiteURL"            =>  $this->websiteUrl,
             "websiteKey"            =>  $this->websiteKey,
             "websiteSToken"         =>  $this->websiteSToken,
-            "recaptchaDataSValue"   =>  $this->dataSValue
+            "recaptchaDataSValue"   =>  $this->dataSValue,
+            "isInvisible"           =>  $this->isInvisible
         );
     }
     
@@ -39,6 +41,10 @@ class RecaptchaV2Proxyless extends Anticaptcha implements AntiCaptchaTaskProtoco
     
     public function setDataSValue($value) {
         $this->dataSValue = $value;
+    }
+    
+    public function setIsInvisible() {
+        $this->isInvisible = true;
     }
     
 }
