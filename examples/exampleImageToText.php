@@ -26,4 +26,6 @@ if (!$api->waitForResult()) {
 } else {
     $captchaText    =   $api->getTaskSolution();
     echo "\nresult: $captchaText\n\n";
+    //check result, then if results is wrong:
+    $api->reportIncorrectImageCaptcha();
 }

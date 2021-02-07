@@ -107,6 +107,54 @@ class Anticaptcha {
         }
     }
     
+    public function reportIncorrectImageCaptcha() {
+        $result = $this->jsonPostRequest("reportIncorrectImageCaptcha", [
+            "clientKey" =>  $this->clientKey,
+            "taskId"    =>  $this->taskId
+        ]);
+        if ($result == false) {
+            $this->debout("API error", "red");
+            return false;
+        }
+        if ($result->errorId == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public function reportIncorrectRecaptcha() {
+        $result = $this->jsonPostRequest("reportIncorrectRecaptcha", [
+            "clientKey" =>  $this->clientKey,
+            "taskId"    =>  $this->taskId
+        ]);
+        if ($result == false) {
+            $this->debout("API error", "red");
+            return false;
+        }
+        if ($result->errorId == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public function reportCorrectRecaptcha() {
+        $result = $this->jsonPostRequest("reportCorrectRecaptcha", [
+            "clientKey" =>  $this->clientKey,
+            "taskId"    =>  $this->taskId
+        ]);
+        if ($result == false) {
+            $this->debout("API error", "red");
+            return false;
+        }
+        if ($result->errorId == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     public function jsonPostRequest($methodName, $postData) {
         
         
