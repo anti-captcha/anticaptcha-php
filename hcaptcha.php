@@ -14,7 +14,7 @@ class HCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function getPostData() {
         return array(
-            "type"          =>  "NoCaptchaTask",
+            "type"          =>  "HCaptchaTask",
             "websiteURL"    =>  $this->websiteUrl,
             "websiteKey"    =>  $this->websiteKey,
             "proxyType"     =>  $this->proxyType,
