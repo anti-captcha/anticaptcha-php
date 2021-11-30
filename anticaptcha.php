@@ -13,6 +13,7 @@ class Anticaptcha {
     private $scheme = "https";
     private $clientKey;
     private $verboseMode = false;
+    public $verifySSL = true;
     private $errorMessage;
     private $taskId;
     public $taskInfo;
@@ -36,7 +37,11 @@ class Anticaptcha {
         }
         
         if ($submitResult->errorId == 0) {
-            $this->taskId = $submitResult->taskId;
+            $this->taskId = (int)$submitResult->taskId;
+            if ($this->taskId == 0) {
+                $this->debout("API Error: incorrect taskId = 0", "red");
+                return false;
+            }
             $this->debout("created task with ID {$this->taskId}", "yellow");
             return true;
         } else {
@@ -178,6 +183,11 @@ class Anticaptcha {
         ));
         curl_setopt($ch,CURLOPT_TIMEOUT,30);
         curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,30);
+        if (!$this->verifySSL) {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+            curl_setopt($ch, CURLOPT_SSLVERSION, 1);
+        }
         $result = curl_exec($ch);
         if ($this->verboseMode) {
             echo "API response:\n";
