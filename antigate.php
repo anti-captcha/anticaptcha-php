@@ -14,7 +14,7 @@ class AntiGate extends Anticaptcha implements AntiCaptchaTaskProtocol {
         return array(
             "type"                      =>  "AntiGateTask",
             "templateName"              =>  $this->templateName,
-            "websiteUrl"                =>  $this->websiteUrl,
+            "websiteURL"                =>  $this->websiteUrl,
             "variables"                 =>  $this->variables,
             "proxyAddress"              =>  $this->proxyAddress,
             "proxyPort"                 =>  $this->proxyPort,
