@@ -10,11 +10,14 @@ $api->setVerboseMode(true);
 $api->setKey(readline("You API key: "));
 
 //recaptcha key from target website
-$api->setTemplateName("Demo sign-in at anti-captcha.com");
-$api->setWebsiteURL("https://anti-captcha.com/tutorials/v2-textarea");
+$api->setTemplateName("Sign-in and wait for control text");
+$api->setWebsiteURL("http://antigate.com/logintest.php");
 $api->setVariables([
-    "login"     =>  "test login",
-    "password"  =>  "test pass"
+    "login_input_css"       =>  "#login",
+    "login_input_value"     =>  "the login",
+    "password_input_css"    =>  "#password",
+    "password_input_value"  => "test password",
+    "control_text"          =>  "You have been logged successfully"
 ]);
 
 if (!$api->createTask()) {
