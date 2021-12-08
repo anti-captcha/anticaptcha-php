@@ -160,6 +160,24 @@ class Anticaptcha {
         }
     }
     
+    public function pushAntiGateVariable($name, $value) {
+        $result = $this->jsonPostRequest("pushAntiGateVariable", [
+            "clientKey" =>  $this->clientKey,
+            "taskId"    =>  $this->taskId,
+            "name"      =>  $name,
+            "value"     =>  $value
+        ]);
+        if ($result == false) {
+            $this->debout("API error", "red");
+            return false;
+        }
+        if ($result->errorId == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     public function jsonPostRequest($methodName, $postData) {
         
         
