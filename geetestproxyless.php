@@ -8,6 +8,8 @@ class GeeTestProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $geetestApiServerSubdomain;
     private $geetestLib;
     private $userAgent = "";
+    private $version = 3;
+    private $initParameters;
     
     public function getPostData() {
         $set = array(
@@ -18,6 +20,8 @@ class GeeTestProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
             "gt"                        =>  $this->websiteKey,
             "challenge"                 =>  $this->websiteChallenge,
             "userAgent"                 =>  $this->userAgent,
+            "version"                   =>  $this->version,
+            "initParameters"            =>  $this->initParameters
         );
         return $set;
     }
@@ -42,16 +46,25 @@ class GeeTestProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
         $this->websiteChallenge = $value;
     }
     
-    public function setAPISubdomain(string $value): void {
+    public function setAPISubdomain($value) {
         $this->geetestApiServerSubdomain = $value;
     }
     
-    public function setUserAgent(string $value): void {
+    public function setUserAgent($value) {
         $this->userAgent = $value;
     }
     
-    public function setGeetestLib(string $geetestLib): void {
+    public function setGeetestLib($geetestLib) {
         $this->geetestLib = $geetestLib;
+    }
+    
+    public function setVersion($value) {
+        $this->version = (int)$value;
+    }
+    
+    public function setInitParameters($value) {
+        if (!is_array($value)) return;
+        $this->initParameters = $value;
     }
     
     
