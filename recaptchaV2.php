@@ -13,6 +13,7 @@ class RecaptchaV2 extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $proxyPassword;
     private $userAgent = "";
     private $cookies = "";
+    private $isInvisible;
     
     public function getPostData() {
         return array(
@@ -27,7 +28,8 @@ class RecaptchaV2 extends Anticaptcha implements AntiCaptchaTaskProtocol {
             "proxyLogin"            =>  $this->proxyLogin,
             "proxyPassword"         =>  $this->proxyPassword,
             "userAgent"             =>  $this->userAgent,
-            "cookies"               =>  $this->cookies
+            "cookies"               =>  $this->cookies,
+            "isInvisible"           =>  $this->isInvisible
         );
     }
     
@@ -85,6 +87,10 @@ class RecaptchaV2 extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function setDataSValue($value) {
         $this->dataSValue = $value;
+    }
+    
+    public function setIsInvisible() {
+        $this->isInvisible = true;
     }
     
 }

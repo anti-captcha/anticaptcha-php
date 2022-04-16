@@ -11,6 +11,7 @@ class HCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $proxyPassword;
     private $userAgent = "";
     private $cookies = "";
+    private $isInvisible;
     private $enterprisePayload;
     
     public function getPostData() {
@@ -25,6 +26,7 @@ class HCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
             "proxyPassword"     =>  $this->proxyPassword,
             "userAgent"         =>  $this->userAgent,
             "cookies"           =>  $this->cookies,
+            "isInvisible"       =>  $this->isInvisible,
             "enterprisePayload" =>  $this->enterprisePayload
         );
     }
@@ -78,6 +80,10 @@ class HCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
             throw new Exception("Enterprise payload is not an object");
         }
         $this->enterprisePayload = $object;
+    }
+    
+    public function setIsInvisible() {
+        $this->isInvisible = true;
     }
     
 }
