@@ -11,19 +11,21 @@ class HCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $proxyPassword;
     private $userAgent = "";
     private $cookies = "";
+    private $enterprisePayload;
     
     public function getPostData() {
         return array(
-            "type"          =>  "HCaptchaTask",
-            "websiteURL"    =>  $this->websiteUrl,
-            "websiteKey"    =>  $this->websiteKey,
-            "proxyType"     =>  $this->proxyType,
-            "proxyAddress"  =>  $this->proxyAddress,
-            "proxyPort"     =>  $this->proxyPort,
-            "proxyLogin"    =>  $this->proxyLogin,
-            "proxyPassword" =>  $this->proxyPassword,
-            "userAgent"     =>  $this->userAgent,
-            "cookies"       =>  $this->cookies
+            "type"              =>  "HCaptchaTask",
+            "websiteURL"        =>  $this->websiteUrl,
+            "websiteKey"        =>  $this->websiteKey,
+            "proxyType"         =>  $this->proxyType,
+            "proxyAddress"      =>  $this->proxyAddress,
+            "proxyPort"         =>  $this->proxyPort,
+            "proxyLogin"        =>  $this->proxyLogin,
+            "proxyPassword"     =>  $this->proxyPassword,
+            "userAgent"         =>  $this->userAgent,
+            "cookies"           =>  $this->cookies,
+            "enterprisePayload" =>  $this->enterprisePayload
         );
     }
     
@@ -69,6 +71,13 @@ class HCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function setCookies($value) {
         $this->cookies = $value;
+    }
+    
+    public function setEnterprisePayload($object) {
+        if (!is_array($object)) {
+            throw new Exception("Enterprise payload is not an object");
+        }
+        $this->enterprisePayload = $object;
     }
     
 }

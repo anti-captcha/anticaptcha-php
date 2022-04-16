@@ -4,12 +4,16 @@ class HCaptchaProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
 
     private $websiteUrl;
     private $websiteKey;
+    private $userAgent = "";
+    private $enterprisePayload;
     
     public function getPostData() {
         return array(
-            "type"          =>  "HCaptchaTaskProxyless",
-            "websiteURL"    =>  $this->websiteUrl,
-            "websiteKey"    =>  $this->websiteKey
+            "type"              =>  "HCaptchaTaskProxyless",
+            "websiteURL"        =>  $this->websiteUrl,
+            "websiteKey"        =>  $this->websiteKey,
+            "userAgent"         =>  $this->userAgent,
+            "enterprisePayload" =>  $this->enterprisePayload
         );
     }
     
@@ -27,6 +31,17 @@ class HCaptchaProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function setWebsiteKey($value) {
         $this->websiteKey = $value;
+    }
+    
+    public function setUserAgent($value) {
+        $this->userAgent = $value;
+    }
+    
+    public function setEnterprisePayload($object) {
+        if (!is_array($object)) {
+            throw new Exception("Enterprise payload is not an object");
+        }
+        $this->enterprisePayload = $object;
     }
     
 }
