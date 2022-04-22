@@ -144,6 +144,22 @@ class Anticaptcha {
         }
     }
     
+    public function reportIncorrectHcaptcha() {
+        $result = $this->jsonPostRequest("reportIncorrectHcaptcha", [
+            "clientKey" =>  $this->clientKey,
+            "taskId"    =>  $this->taskId
+        ]);
+        if ($result == false) {
+            $this->debout("API error", "red");
+            return false;
+        }
+        if ($result->errorId == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     public function reportCorrectRecaptcha() {
         $result = $this->jsonPostRequest("reportCorrectRecaptcha", [
             "clientKey" =>  $this->clientKey,
