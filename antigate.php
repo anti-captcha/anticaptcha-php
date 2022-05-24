@@ -4,6 +4,7 @@ class AntiGate extends Anticaptcha implements AntiCaptchaTaskProtocol {
 
     private $websiteUrl;
     private $templateName;
+    private $domainsOfInterest = [];
     private $variables;
     private $proxyAddress;
     private $proxyPort;
@@ -15,6 +16,7 @@ class AntiGate extends Anticaptcha implements AntiCaptchaTaskProtocol {
             "type"                      =>  "AntiGateTask",
             "templateName"              =>  $this->templateName,
             "websiteURL"                =>  $this->websiteUrl,
+            "domainsOfInterest"         =>  $this->domainsOfInterest,
             "variables"                 =>  $this->variables,
             "proxyAddress"              =>  $this->proxyAddress,
             "proxyPort"                 =>  $this->proxyPort,
@@ -41,6 +43,10 @@ class AntiGate extends Anticaptcha implements AntiCaptchaTaskProtocol {
             exit;
         }
         $this->templateName = $value;
+    }
+    
+    public function setDomainsOfInterest($value) {
+        $this->domainsOfInterest = $value;
     }
     
     public function setVariables($values) {
