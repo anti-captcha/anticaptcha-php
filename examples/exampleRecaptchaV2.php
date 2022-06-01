@@ -23,6 +23,10 @@ $api->setProxyPassword(readline("Proxy password (if any): "));
 //browser header parameters
 $api->setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116");
 
+//Specify softId to earn 10% commission with your app.
+//Get your softId here: https://anti-captcha.com/clients/tools/devcenter
+$api->setSoftId(0);
+
 if (!$api->createTask()) {
     $api->debout("API v2 send failed - ".$api->getErrorMessage(), "red");
     return false;

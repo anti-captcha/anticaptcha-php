@@ -16,6 +16,10 @@ $api->setWebsiteKey("6LdIFr0ZAAAAAO3vz0O0OQrtAefzdJcWQM2TMYQH");
 $tokenS = readline("s token:");
 $api->setEnterprisePayload(["s" => $tokenS]);
 
+//Specify softId to earn 10% commission with your app.
+//Get your softId here: https://anti-captcha.com/clients/tools/devcenter
+$api->setSoftId(0);
+
 if (!$api->createTask()) {
     $api->debout("API v2 send failed - ".$api->getErrorMessage(), "red");
     return false;

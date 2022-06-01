@@ -21,6 +21,10 @@ $api->setInitParameters([
 ]);
 
 
+//Specify softId to earn 10% commission with your app.
+//Get your softId here: https://anti-captcha.com/clients/tools/devcenter
+$api->setSoftId(0);
+
 if (!$api->createTask()) {
     $api->debout("API v2 send failed - ".$api->getErrorMessage(), "red");
     exit;

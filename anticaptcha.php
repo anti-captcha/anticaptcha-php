@@ -17,6 +17,7 @@ class Anticaptcha {
     private $errorMessage;
     private $taskId;
     public $taskInfo;
+    private $softId;
     
     
     
@@ -27,7 +28,8 @@ class Anticaptcha {
         
         $postData = array(
             "clientKey" =>  $this->clientKey,
-            "task"      =>  $this->getPostData()
+            "task"      =>  $this->getPostData(),
+            "softId"    =>  $this->softId
         );
         $submitResult = $this->jsonPostRequest("createTask", $postData);
         
@@ -293,5 +295,14 @@ class Anticaptcha {
         $this->clientKey = $key;
     }
     
+    /**
+     * Specify softId to earn 10% commission with your app.
+     * Get your softId here: https://anti-captcha.com/clients/tools/devcenter
+     *
+     * @param int $value
+     */
+    public function setSoftId($value) {
+        $this->softId = (int)$value;
+    }
 
 }
