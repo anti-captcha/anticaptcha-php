@@ -3,7 +3,6 @@
 class AntiBotCookie extends Anticaptcha implements AntiCaptchaTaskProtocol {
 
     private $websiteUrl;
-    private $providerName;
     private $proxyAddress;
     private $proxyPort;
     private $proxyLogin;
@@ -12,7 +11,6 @@ class AntiBotCookie extends Anticaptcha implements AntiCaptchaTaskProtocol {
     public function getPostData() {
         return array(
             "type"                      =>  "AntiBotCookieTask",
-            "providerName"              =>  $this->providerName,
             "websiteURL"                =>  $this->websiteUrl,
             "proxyAddress"              =>  $this->proxyAddress,
             "proxyPort"                 =>  $this->proxyPort,
@@ -31,14 +29,6 @@ class AntiBotCookie extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function setWebsiteURL($value) {
         $this->websiteUrl = $value;
-    }
-    
-    public function setProviderName($value) {
-        if (!is_string($value)) {
-            echo "Provider name must be a string!";
-            exit;
-        }
-        $this->providerName = $value;
     }
     
     public function setProxyAddress($value) {
