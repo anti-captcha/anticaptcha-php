@@ -27,6 +27,10 @@ class HCaptchaProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
         return $this->taskInfo->solution->gRecaptchaResponse;
     }
     
+    public function getTaskUserAgent() {
+        return $this->taskInfo->solution->userAgent;
+    }
+    
     public function setWebsiteURL($value) {
         $this->websiteUrl = $value;
     }
