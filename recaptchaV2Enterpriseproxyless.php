@@ -5,13 +5,15 @@ class RecaptchaV2EnterpriseProxyless extends Anticaptcha implements AntiCaptchaT
     private $websiteUrl;
     private $websiteKey;
     private $enterprisePayload;
+    private $isInvisible;
     
     public function getPostData() {
         return array(
             "type"                  =>  "RecaptchaV2EnterpriseTaskProxyless",
             "websiteURL"            =>  $this->websiteUrl,
             "websiteKey"            =>  $this->websiteKey,
-            "enterprisePayload"     =>  $this->enterprisePayload
+            "enterprisePayload"     =>  $this->enterprisePayload,
+            "isInvisible"           =>  $this->isInvisible
         );
     }
     
@@ -29,6 +31,10 @@ class RecaptchaV2EnterpriseProxyless extends Anticaptcha implements AntiCaptchaT
     
     public function setEnterprisePayload($arrayValue) {
         $this->enterprisePayload = $arrayValue;
+    }
+    
+    public function setIsInvisible() {
+        $this->isInvisible = true;
     }
     
 }
