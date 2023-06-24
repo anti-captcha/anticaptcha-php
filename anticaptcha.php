@@ -114,6 +114,22 @@ class Anticaptcha {
         }
     }
     
+    public function getCreditsBalance() {
+        $postData = array(
+            "clientKey" =>  $this->clientKey
+        );
+        $result = $this->jsonPostRequest("getBalance", $postData);
+        if ($result == false) {
+            $this->debout("API error", "red");
+            return false;
+        }
+        if ($result->errorId == 0 && isset($result->captchaCredits)) {
+            return $result->captchaCredits;
+        } else {
+            return false;
+        }
+    }
+    
     public function reportIncorrectImageCaptcha() {
         $result = $this->jsonPostRequest("reportIncorrectImageCaptcha", [
             "clientKey" =>  $this->clientKey,
