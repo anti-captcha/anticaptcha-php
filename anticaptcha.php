@@ -242,8 +242,8 @@ class Anticaptcha {
         }
         $result = curl_exec($ch);
         if ($this->verboseMode) {
-            echo "API response:\n";
-            echo $result."\n";
+            $this->debout("API response:");
+            $this->debout($result);
         }
         $curlError = curl_error($ch);
         

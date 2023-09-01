@@ -1,6 +1,6 @@
 <?php
 
-class ImageCoordinates extends Anticaptcha implements AntiCaptchaTaskProtocol {
+class ImageToCoordinates extends Anticaptcha implements AntiCaptchaTaskProtocol {
 
     private $body;
     private $comment = "";
@@ -9,7 +9,7 @@ class ImageCoordinates extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function getPostData() {
         return array(
-            "type"      =>  "ImageCoordinatesTask",
+            "type"      =>  "ImageToCoordinatesTask",
             "body"      =>  str_replace("\n", "", $this->body),
             "comment"   =>  $this->comment,
             "mode"      =>  $this->mode

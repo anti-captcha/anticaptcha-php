@@ -1,9 +1,9 @@
 <?php
 
 include("../anticaptcha.php");
-include("../imagecoordinates.php");
+include("../imagetocoordinates.php");
 
-$api = new ImageToText();
+$api = new ImageToCoordinates();
 $api->setVerboseMode(true);
         
 //your anti-captcha.com account key
@@ -11,6 +11,8 @@ $api->setKey(readline("You API key: "));
 
 //setting file
 $api->setFile("capcha.jpg");
+$api->setComment("Select all elephants");
+$api->setMode("rectangles");
 
 //Specify softId to earn 10% commission with your app.
 //Get your softId here: https://anti-captcha.com/clients/tools/devcenter
