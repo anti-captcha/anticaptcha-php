@@ -15,6 +15,7 @@ class Anticaptcha {
     private $verboseMode = false;
     public $verifySSL = true;
     private $errorMessage;
+    private $errorCode;
     private $taskId;
     public $taskInfo;
     private $softId;
@@ -93,6 +94,7 @@ class Anticaptcha {
             
         } else {
             $this->debout("API error {$this->taskInfo->errorCode} : {$this->taskInfo->errorDescription}", "red");
+            $this->errorCode = $this->taskInfo->errorCode;
             $this->setErrorMessage($this->taskInfo->errorDescription);
             return false;
         }
@@ -285,6 +287,10 @@ class Anticaptcha {
     
     public function getErrorMessage() {
         return $this->errorMessage;
+    }
+    
+    public function getErrorCode() {
+        return $this->errorCode;
     }
     
     public function getTaskId() {
