@@ -5,6 +5,7 @@ class TurnstileProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol 
     private $websiteUrl;
     private $websiteKey;
     private $action;
+    private $cData;
     private $userAgent = "";
     
     public function getPostData() {
@@ -13,7 +14,8 @@ class TurnstileProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol 
             "websiteURL"        =>  $this->websiteUrl,
             "websiteKey"        =>  $this->websiteKey,
             "userAgent"         =>  $this->userAgent,
-            "action"            =>  $this->action
+            "action"            =>  $this->action,
+            "turnstileCData"    =>  $this->cData
         );
     }
     
@@ -39,6 +41,10 @@ class TurnstileProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol 
     
     public function setAction($value) {
         $this->action = $value;
+    }
+    
+    public function setCData($value) {
+        $this->cData = $value;
     }
     
 }
