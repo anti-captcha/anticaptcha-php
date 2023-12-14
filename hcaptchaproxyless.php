@@ -6,6 +6,7 @@ class HCaptchaProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $websiteKey;
     private $userAgent = "";
     private $isInvisible;
+    private $isEnterprise;
     private $enterprisePayload;
     
     public function getPostData() {
@@ -15,6 +16,7 @@ class HCaptchaProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
             "websiteKey"        =>  $this->websiteKey,
             "userAgent"         =>  $this->userAgent,
             "isInvisible"       =>  $this->isInvisible,
+            "isEnterprise"      =>  $this->isEnterprise,
             "enterprisePayload" =>  $this->enterprisePayload
         );
     }
@@ -45,6 +47,10 @@ class HCaptchaProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function setIsInvisible() {
         $this->isInvisible = true;
+    }
+    
+    public function setIsEnterprise() {
+        $this->isEnterprise = true;
     }
     
     public function setEnterprisePayload($object) {

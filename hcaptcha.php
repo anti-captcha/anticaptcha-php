@@ -12,6 +12,7 @@ class HCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $userAgent = "";
     private $cookies = "";
     private $isInvisible;
+    private $isEnterprise;
     private $enterprisePayload;
     
     public function getPostData() {
@@ -27,6 +28,7 @@ class HCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
             "userAgent"         =>  $this->userAgent,
             "cookies"           =>  $this->cookies,
             "isInvisible"       =>  $this->isInvisible,
+            "isEnterprise"      =>  $this->isEnterprise,
             "enterprisePayload" =>  $this->enterprisePayload
         );
     }
@@ -77,6 +79,10 @@ class HCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function setCookies($value) {
         $this->cookies = $value;
+    }
+    
+    public function setIsEnterprise() {
+        $this->isEnterprise = true;
     }
     
     public function setEnterprisePayload($object) {
