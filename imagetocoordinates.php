@@ -47,4 +47,8 @@ class ImageToCoordinates extends Anticaptcha implements AntiCaptchaTaskProtocol 
         $this->mode = $value;
     }
     
+    public function setBody($rawBytes) {
+        $this->body = base64_encode($rawBytes);
+    }
+    
 }
