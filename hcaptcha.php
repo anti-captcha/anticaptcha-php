@@ -45,6 +45,10 @@ class HCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
         return $this->taskInfo->solution->userAgent;
     }
     
+    public function getRespKey() {
+        return $this->taskInfo->solution->respKey;
+    }
+    
     public function setWebsiteURL($value) {
         $this->websiteUrl = $value;
     }
