@@ -2,6 +2,7 @@
 
 class ImageToText extends Anticaptcha implements AntiCaptchaTaskProtocol {
 
+    
     private $body;
     private $phrase = false;
     private $case = false;
@@ -9,18 +10,24 @@ class ImageToText extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $math = 0;
     private $minLength = 0;
     private $maxLength = 0;
+    private $websiteURL = "";
+    private $languagePool = "";
+    private $comment = "";
     
     
     public function getPostData() {
         return array(
-            "type"      =>  "ImageToTextTask",
-            "body"      =>  str_replace("\n", "", $this->body),
-            "phrase"    =>  $this->phrase,
-            "case"      =>  $this->case,
-            "numeric"   =>  $this->numeric,
-            "math"      =>  $this->math,
-            "minLength" =>  $this->minLength,
-            "maxLength" =>  $this->maxLength
+            "type"          =>  "ImageToTextTask",
+            "body"          =>  str_replace("\n", "", $this->body),
+            "phrase"        =>  $this->phrase,
+            "case"          =>  $this->case,
+            "numeric"       =>  $this->numeric,
+            "math"          =>  $this->math,
+            "minLength"     =>  $this->minLength,
+            "maxLength"     =>  $this->maxLength,
+            "websiteURL"    =>  $this->websiteURL,
+            "languagePool"  =>  $this->languagePool,
+            "comment"       =>  $this->comment
         );
     }
     
@@ -46,6 +53,10 @@ class ImageToText extends Anticaptcha implements AntiCaptchaTaskProtocol {
         
     }
     
+    public function setBody($base64) {
+        $this->body = $base64;
+    }
+    
     public function setPhraseFlag($value) {
         $this->phrase = $value;
     }
@@ -68,6 +79,18 @@ class ImageToText extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function setMaxLengthFlag($value) {
         $this->maxLength = $value;
+    }
+    
+    public function setWebsiteURL($value) {
+        $this->websiteURL = $value;
+    }
+    
+    public function setLanguagePool($languagePool) {
+        $this->languagePool = $languagePool;
+    }
+    
+    public function setComment($comment) {
+        $this->comment = $comment;
     }
     
 }
