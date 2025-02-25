@@ -81,7 +81,7 @@ class FunCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
      * @param string $dataBlob
      */
     public function setDataBlob($dataBlob) {
-        $this->dataBlob = array("blob" => $dataBlob);
+        $this->dataBlob = $dataBlob;
     }
     
     public function setJSSubdomain($value) {
