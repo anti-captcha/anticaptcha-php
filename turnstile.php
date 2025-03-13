@@ -6,6 +6,7 @@ class Turnstile extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $websiteKey;
     private $action;
     private $cData;
+    private $chlPageData;
     private $proxyType = "http";
     private $proxyAddress;
     private $proxyPort;
@@ -20,7 +21,8 @@ class Turnstile extends Anticaptcha implements AntiCaptchaTaskProtocol {
             "websiteURL"        =>  $this->websiteUrl,
             "websiteKey"        =>  $this->websiteKey,
             "action"            =>  $this->action,
-            "turnstileCData"    =>  $this->cData,
+            "cData"             =>  $this->cData,
+            "chlPageData"       =>  $this->chlPageData,
             "proxyType"         =>  $this->proxyType,
             "proxyAddress"      =>  $this->proxyAddress,
             "proxyPort"         =>  $this->proxyPort,
@@ -81,6 +83,10 @@ class Turnstile extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function setCData($value) {
         $this->cData = $value;
+    }
+    
+    public function setChlPageData($value) {
+        $this->chlPageData = $value;
     }
     
 }
