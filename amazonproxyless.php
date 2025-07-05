@@ -8,6 +8,8 @@ class AmazonProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $context;
     private $challengeScript;
     private $captchaScript;
+    private $jsapiScript;
+    private $wafType;
     
     public function getPostData() {
         return array(
@@ -17,7 +19,9 @@ class AmazonProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
             "iv"                =>  $this->iv,
             "context"           =>  $this->context,
             "challengeScript"   =>  $this->challengeScript,
-            "captchaScript"     =>  $this->captchaScript
+            "captchaScript"     =>  $this->captchaScript,
+            "jsapiScript"       =>  $this->jsapiScript,
+            "wafType"           =>  $this->wafType,
         );
     }
     
@@ -50,6 +54,14 @@ class AmazonProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function setCaptchaScript($value) {
         $this->captchaScript = $value;
+    }
+    
+    public function setWafType($value) {
+        $this->wafType = $value;
+    }
+    
+    public function setJsapiScript($value) {
+        $this->jsapiScript = $value;
     }
     
 }

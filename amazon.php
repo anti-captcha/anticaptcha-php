@@ -8,6 +8,8 @@ class Amazon extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $context;
     private $challengeScript;
     private $captchaScript;
+    private $jsapiScript;
+    private $wafType;
     private $proxyType = "http";
     private $proxyAddress;
     private $proxyPort;
@@ -23,6 +25,8 @@ class Amazon extends Anticaptcha implements AntiCaptchaTaskProtocol {
             "context"           =>  $this->context,
             "challengeScript"   =>  $this->challengeScript,
             "captchaScript"     =>  $this->captchaScript,
+            "jsapiScript"       =>  $this->jsapiScript,
+            "wafType"           =>  $this->wafType,
             "proxyType"         =>  $this->proxyType,
             "proxyAddress"      =>  $this->proxyAddress,
             "proxyPort"         =>  $this->proxyPort,
@@ -81,6 +85,14 @@ class Amazon extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function setProxyPassword($value) {
         $this->proxyPassword = $value;
+    }
+    
+    public function setWafType($value) {
+        $this->wafType = $value;
+    }
+    
+    public function setJsapiScript($value) {
+        $this->jsapiScript = $value;
     }
     
 }
