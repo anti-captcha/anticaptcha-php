@@ -4,12 +4,14 @@ class AltchaProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
 
     private $websiteUrl;
     private $challengeURL;
+    private $challengeJSON;
     
     public function getPostData() {
         return array(
             "type"              =>  "AltchaTaskProxyless",
             "websiteURL"        =>  $this->websiteUrl,
-            "challengeURL"      =>  $this->challengeURL
+            "challengeURL"      =>  $this->challengeURL,
+            "challengeJSON"     =>  $this->challengeJSON
         );
     }
     
@@ -27,6 +29,10 @@ class AltchaProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function setChallengeURL($value) {
         $this->challengeURL = $value;
+    }
+    
+    public function setChallengeJSON($value) {
+        $this->challengeJSON = $value;
     }
     
 }

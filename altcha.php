@@ -9,12 +9,14 @@ class Altcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $proxyPort;
     private $proxyLogin;
     private $proxyPassword;
+    private $challengeJSON;
     
     public function getPostData() {
         return array(
             "type"              =>  "AltchaTask",
             "websiteURL"        =>  $this->websiteUrl,
             "challengeURL"      =>  $this->challengeURL,
+            "challengeJSON"     =>  $this->challengeJSON,
             "proxyType"         =>  $this->proxyType,
             "proxyAddress"      =>  $this->proxyAddress,
             "proxyPort"         =>  $this->proxyPort,
@@ -41,6 +43,10 @@ class Altcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
     
     public function setChallengeURL($value) {
         $this->challengeURL = $value;
+    }
+
+    public function setChallengeJSON($value) {
+        $this->challengeJSON = $value;
     }
     
     public function setProxyType($value) {
