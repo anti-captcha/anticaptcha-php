@@ -41,6 +41,10 @@ class RecaptchaV2 extends Anticaptcha implements AntiCaptchaTaskProtocol {
         return $this->taskInfo->solution->gRecaptchaResponse;
     }
     
+    public function getWorkersUserAgent() {
+        return $this->taskInfo->solution->userAgent;
+    }
+    
     public function getWorkerCookies() {
         return $this->taskInfo->solution->cookies;
     }

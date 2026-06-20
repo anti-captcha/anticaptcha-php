@@ -21,6 +21,10 @@ class RecaptchaV2EnterpriseProxyless extends Anticaptcha implements AntiCaptchaT
         return $this->taskInfo->solution->gRecaptchaResponse;
     }
     
+    public function getWorkersUserAgent() {
+        return $this->taskInfo->solution->userAgent;
+    }
+    
     public function setWebsiteURL($value) {
         $this->websiteUrl = $value;
     }

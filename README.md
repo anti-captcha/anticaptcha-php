@@ -58,6 +58,8 @@ if (!$api->waitForResult(300)) {
     $gResponse = $api->getTaskSolution();
     echo "\n";
     echo "your recaptcha token: $gResponse\n\n";
+    echo "worker's user-agent in case you need it:\n";
+    echo $api->getWorkersUserAgent()."\n";
 
 }
 ```

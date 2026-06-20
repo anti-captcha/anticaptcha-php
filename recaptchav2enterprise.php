@@ -37,6 +37,10 @@ class RecaptchaV2Enterprise extends Anticaptcha implements AntiCaptchaTaskProtoc
         return $this->taskInfo->solution->gRecaptchaResponse;
     }
     
+    public function getWorkersUserAgent() {
+        return $this->taskInfo->solution->userAgent;
+    }
+    
     public function setWebsiteURL($value) {
         $this->websiteUrl = $value;
     }

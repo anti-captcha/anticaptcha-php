@@ -21,6 +21,10 @@ class FriendlyCaptchaProxyless extends Anticaptcha implements AntiCaptchaTaskPro
         return $this->taskInfo->solution->token;
     }
     
+    public function getWorkersUserAgent() {
+        return $this->taskInfo->solution->userAgent;
+    }
+    
     public function setWebsiteURL($value) {
         $this->websiteUrl = $value;
     }

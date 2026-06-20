@@ -34,6 +34,10 @@ class GeeTestProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
         return $this->taskInfo->solution;
     }
     
+    public function getWorkersUserAgent() {
+        return $this->taskInfo->solution->userAgent;
+    }
+    
     public function setWebsiteURL($value) {
         $this->websiteUrl = $value;
     }
